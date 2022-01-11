@@ -3,7 +3,9 @@ const path = require("path");
 const app = express();
 const PORT = 8000;
 app.set("view engine", "ejs");
-app.set("views", path.join(__dirname, "views"));    
+app.set("views", path.join(__dirname, "views"));
+//express router
+app.use("/", require("./routes"))
 app.listen(PORT, (err) => {
     if (err) {
         console.error("Error while running server");
