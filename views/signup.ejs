@@ -1,0 +1,33 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/css/auth.css">
+</head>
+<body>
+<main>
+    <!--    Create form in this section-->
+    <section>
+        <form action="/users/create" method="post">
+            <p class="form-heading">let's get you onboard</p>
+            <label for="username">Name</label>
+            <input type="text" name="username" id="username" placeholder="Enter Your Name" required>
+            <label for="useremail">Email</label>
+            <input type="email" id="useremail" name="useremail" placeholder="Enter Your Email" required>
+            <label for="userpassword">Password</label>
+            <input type="password" id="userpassword" name="userpassword" placeholder="Enter Your Password" required>
+            <label for="userconfirmpassword">Confirm Password</label>
+            <input type="password" id="userconfirmpassword" name="userconfirmpassword" placeholder="Enter Your Password Again" required>
+            <input type="submit" value="Signup" class="submit-button">
+        </form>
+    </section>
+    <!--    Set Side Background Image in Aside-->
+    <aside>
+
+    </aside>
+</main>
+</body>
+</html>
