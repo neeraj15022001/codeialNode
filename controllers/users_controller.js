@@ -9,7 +9,6 @@ module.exports.about = (req, res) => {
 
 //render login page
 module.exports.login = (req, res) => {
-    console.log(req.cookies)
     return res.render('login', {layout: false, title: "Login"});
 }
 
@@ -21,20 +20,17 @@ module.exports.signup = (req, res) => {
 //create user
 module.exports.create = (req, res) => {
     const user = req.body
-    if (user.userpassword !== user.userconfirmpassword) {
+    console.log(user)
+    if (user.password !== user.confirm_password) {
         return res.redirect('back')
     }
-    User.findOne({email: user.useremail}, (err, data) => {
+    User.findOne({email: user.email}, (err, data) => {
         if (err) {
             console.log("Cannot while checking for user", err);
             return;
         }
         if (!data) {
-            User.create({
-                email: user.useremail,
-                password: user.userpassword,
-                name: user.username
-            }, function (err, data) {
+            User.create(req.body, function (err, data) {
                 if (err) {
                     console.log("Error while creating user", err);
                     return;
@@ -50,5 +46,6 @@ module.exports.create = (req, res) => {
 }
 //create user session
 module.exports.createSession = (req, res) => {
-//    TODO
+    console.log("login ---> ", req.body)
+    return res.redirect("/")
 }
