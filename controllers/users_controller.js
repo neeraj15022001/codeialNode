@@ -1,6 +1,6 @@
 const User = require("../models/users_schema")
 module.exports.profile = (req, res) => {
-    return res.send("<h1>User Profile</h1>");
+    return res.render("profile", {title: "User Profile"});
 }
 
 module.exports.about = (req, res) => {
@@ -9,11 +9,17 @@ module.exports.about = (req, res) => {
 
 //render login page
 module.exports.login = (req, res) => {
+    if (req.isAuthenticated()) {
+        return res.redirect("/users/profile")
+    }
     return res.render('login', {layout: false, title: "Login"});
 }
 
 //render signup page
 module.exports.signup = (req, res) => {
+    if (req.isAuthenticated()) {
+        return res.redirect("/users/profile")
+    }
     return res.render('signup', {layout: false, title: "Signup"});
 }
 
@@ -47,5 +53,9 @@ module.exports.create = (req, res) => {
 //create user session
 module.exports.createSession = (req, res) => {
     console.log("login ---> ", req.body)
-    return res.redirect("/")
+    return res.redirect("/users/profile")
+}
+module.exports.destroySession = function (req, res) {
+    req.logout();
+    return res.redirect("/");
 }
