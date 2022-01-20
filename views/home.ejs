@@ -15,7 +15,7 @@
                     <li class="post-card">
                         <div class="heading">
                             <p class="content"><%= post.content %></p>
-                            <p class="author"><%= post.user.name %></p>
+                            <p class="author">Posted By <%= post.user.name %></p>
                         </div>
                         <div class="comment-box">
                             <% if(locals.user) { %>
@@ -31,7 +31,7 @@
                                 <% console.log(post.comments, comment) %>
                                 <li class="comment-list-item">
                                     <p class="comment-content"><%= comment.content %></p>
-                                    <p class="comment-author"><%= comment.user.name %></p>
+                                    <p class="comment-author">Commented By - <%= comment.user.name %></p>
                                 </li>
                             <% } %>
                         </ul>
