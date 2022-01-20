@@ -1,0 +1,79 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Helvetica Neue", "sans-serif";
+}
+
+main {
+  height: 100vh;
+  display: flex;
+}
+
+section {
+  flex: 1;
+  display: grid;
+  place-items: center;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 400px;
+}
+
+.form-heading {
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  margin: 32px 0;
+  font-weight: bold;
+}
+
+label {
+  font-size: 0.8rem;
+  color: darkgrey;
+}
+
+input {
+  outline: none;
+  border: none;
+  border-bottom: 1px solid silver;
+  margin: 8px 0 32px 0;
+  font-size: 1.2rem;
+
+  &:focus {
+    border-bottom: 2px solid cornflowerblue;
+  }
+}
+
+.submit-button {
+  padding: 24px;
+  border: none;
+  outline: none;
+  border-radius: 8px;
+  color: white;
+  background-color: dodgerblue;
+  box-shadow: 0 4px 10px 1px cornflowerblue;
+  transition: 0.3s ease-in-out;
+  margin: 16px 0;
+  font-size: 0.9rem;
+  cursor: pointer;
+  text-transform: uppercase;
+  font-weight: bolder;
+
+  &:hover {
+    background-color: royalblue;
+  }
+}
+
+aside {
+  background: url("https://images.pexels.com/photos/207896/pexels-photo-207896.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940");
+  background-size: cover;
+  flex: 1;
+}
+
+@media only screen and (max-width: 768px) {
+  aside {
+    flex: 0;
+  }
+}
