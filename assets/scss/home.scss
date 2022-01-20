@@ -1,7 +1,134 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+ * {
+   margin: 0;
+   padding: 0;
+ }
+.bg-home {
+  height: calc(100vh - 120px);
+  background-color: silver;
+}
+
 .main-home {
-  height: calc(100vh - 84px);
-  h1 {
-    margin: 0;
+  height: 100%;
+  padding: 16px;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+  width: 100vw;
+  background-color: white;
+  overflow: auto;
+}
+
+.posts {
+  form {
+    display: flex;
+    flex-direction: column;;
+    align-items: stretch;
+
+    textarea {
+      border: 1px solid silver;
+      border-radius: 4px;
+      padding: 8px;
+      height: 100px;
+      margin-bottom: 16px;
+    }
+
+    input {
+      background-color: dodgerblue;
+      color: white;
+      border-radius: 8px;
+      padding: 16px;
+      text-transform: uppercase;
+      outline: none;
+      border: none;
+      font-weight: 800;
+      cursor: pointer;
+      transition: 0.2s ease-in-out;
+      margin-bottom: 32px;
+      &:hover {
+        background-color: royalblue;
+      }
+    }
+  }
+}
+.all-posts {
+  ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    padding: 0;
+  }
+}
+.post-card {
+  border: 1px solid silver;
+  margin: 8px 0;
+  border-radius: 8px;
+  padding: 0;
+
+  .heading {
+    background-color: dodgerblue;
+    color: white;
+    border-radius: 8px 8px 0 0;
+    box-sizing: border-box;
+    padding: 16px;
+  }
+  .content {
+    text-transform: capitalize;
+    font-size: 1.2rem;
+    font-weight: 600;
+  }
+  .author {
     text-transform: uppercase;
+    font-size: 0.8rem;
+    font-weight: 400;
+    color: ghostwhite;
+  }
+}
+.comment-box {
+  padding: 16px;
+  border-bottom: 1px solid silver;
+  form {
+    display: flex;
+    align-items: center;
+    input[type="text"] {
+      flex: 2;
+      padding: 8px 16px;
+      height: 40px;
+      box-sizing: border-box;
+      border: 1px solid silver;
+      border-radius: 8px;
+    }
+    input[type="submit"] {
+      flex: 1;
+      height: 40px;
+      background-color: dodgerblue;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      margin: 0 8px;
+      transition: 0.2s ease-in-out;
+      &:hover {
+        background-color: royalblue;
+      }
+    }
+  }
+}
+
+.all-comments {
+  padding: 16px !important;
+
+  .comment-list-item {
+    border-bottom: 1px solid silver;
+    padding: 8px 0;
+  }
+  .comment-content {
+    text-transform: capitalize;
+    font-size: 1.1rem;
+  }
+  .comment-author {
+    text-transform: uppercase;
+    font-size: 0.7rem;
+    font-weight: 400;
+    color: darkgrey;
   }
 }

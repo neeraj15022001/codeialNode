@@ -4,21 +4,38 @@ header {
   justify-content: space-between;
   padding: 8px 16px;
   background-color: dodgerblue;
+  color: white;
+  height: 80px;
+  box-sizing: border-box; }
+
+.brand a {
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 1.2rem;
+  font-family: sans-serif;
+  text-decoration: none;
   color: white; }
 
-.brand {
-  text-transform: capitalize;
-  font-weight: bold;
-  font-size: 2rem; }
-
-.header-links a {
-  text-decoration: none;
-  color: white;
-  transition: 0.3s ease-in-out;
-  border-bottom: 1px solid transparent;
-  font-family: sans-serif;
-  margin: 0 8px;
-  font-weight: normal; }
-  .header-links a:hover {
-    border-bottom: 2px solid white;
+.header-links {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  font-size: 0.9rem;
+  text-transform: uppercase; }
+  .header-links a, .header-links p {
+    text-decoration: none;
+    color: white;
+    transition: 0.2s cubic-bezier(0.3, 0.29, 0.34, 0.34);
+    border-bottom: 1px solid transparent;
+    font-family: sans-serif;
+    margin: 0 8px; }
+  .header-links p {
     font-weight: bold; }
+  .header-links a {
+    border: 1px solid white;
+    padding: 8px 16px;
+    border-radius: 8px; }
+    .header-links a:hover {
+      background-color: white;
+      color: dodgerblue;
+      font-weight: bold; }

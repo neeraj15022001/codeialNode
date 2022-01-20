@@ -5,6 +5,8 @@ footer {
   background-color: grey;
   padding: 8px 16px;
   font-family: sans-serif;
-  color: white; }
+  color: white;
+  box-sizing: border-box;
+  height: 40px; }
   footer span {
     text-transform: capitalize; }
