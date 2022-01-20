@@ -1,0 +1,5 @@
+.main-home {
+  height: calc(100vh - 84px); }
+  .main-home h1 {
+    margin: 0;
+    text-transform: uppercase; }

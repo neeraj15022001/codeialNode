@@ -1,0 +1,29 @@
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 16px;
+  background-color: dodgerblue;
+  color: white;
+}
+.brand {
+  text-transform: capitalize;
+  font-weight: bold;
+  font-size: 2rem;
+}
+.header-links {
+  a {
+    text-decoration: none;
+    color: white;
+    transition: 0.3s ease-in-out;
+    border-bottom: 1px solid transparent;
+    font-family: sans-serif;
+    margin: 0 8px;
+    font-weight: normal;
+    &:hover {
+      border-bottom: 2px solid white;
+      font-weight: bold;
+    }
+  }
+
+}

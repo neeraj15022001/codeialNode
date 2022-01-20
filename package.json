@@ -12,6 +12,7 @@
   "author": "Neeraj Gupta",
   "license": "ISC",
   "dependencies": {
+    "@gompa/node-sass-middleware": "^0.12.0",
     "connect-mongo": "^4.6.0",
     "cookie-parser": "^1.4.6",
     "ejs": "^3.1.6",
