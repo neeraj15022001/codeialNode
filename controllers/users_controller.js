@@ -1,6 +1,22 @@
 const User = require("../models/users_schema")
 module.exports.profile = (req, res) => {
-    return res.render("profile", {title: "User Profile"});
+    User.findById(req.params.id, (err, user) => {
+        return res.render("profile", {title: "User Profile", profile_user: user});
+    })
+}
+
+module.exports.update = (req, res) => {
+    if (req.user.id == req.params.id) {
+        User.findByIdAndUpdate(req.params.id, req.body, (err, user) => {
+            if (err) {
+                console.log("Error while updating user", err);
+                return;
+            }
+            return res.redirect("back")
+        })
+    } else {
+        return res.status(401).send("Unauthorized")
+    }
 }
 
 module.exports.about = (req, res) => {
@@ -10,7 +26,7 @@ module.exports.about = (req, res) => {
 //render login page
 module.exports.login = (req, res) => {
     if (req.isAuthenticated()) {
-        return res.redirect("/users/profile")
+        return res.redirect(`/users/profile/${req.user.id}`)
     }
     return res.render('login', {layout: false, title: "Login"});
 }
@@ -18,7 +34,7 @@ module.exports.login = (req, res) => {
 //render signup page
 module.exports.signup = (req, res) => {
     if (req.isAuthenticated()) {
-        return res.redirect("/users/profile")
+        return res.redirect(`/users/profile/${req.user.id}`)
     }
     return res.render('signup', {layout: false, title: "Signup"});
 }
@@ -53,7 +69,7 @@ module.exports.create = (req, res) => {
 //create user session
 module.exports.createSession = (req, res) => {
     console.log("login ---> ", req.body)
-    return res.redirect("/users/profile")
+    return res.redirect(`/users/profile/${req.user.id}`)
 }
 module.exports.destroySession = function (req, res) {
     req.logout();

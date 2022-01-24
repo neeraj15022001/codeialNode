@@ -3,6 +3,39 @@
   margin: 0;
   padding: 0; }
 
+.home-container {
+  display: flex;
+  width: 100vw; }
+  .home-container .bg-home {
+    flex: 3; }
+  .home-container aside.user-friends {
+    flex: 1;
+    padding: 16px;
+    border-left: 1px solid silver; }
+    .home-container aside.user-friends h4 {
+      font-size: 2rem;
+      font-family: sans-serif;
+      margin-bottom: 16px; }
+    .home-container aside.user-friends ul.friends-list {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap; }
+      .home-container aside.user-friends ul.friends-list li {
+        border: 1px solid dodgerblue;
+        padding: 8px 16px;
+        border-radius: 8px;
+        transition: 0.2s ease-in-out;
+        margin: 8px 8px 8px 0; }
+        .home-container aside.user-friends ul.friends-list li a {
+          color: dodgerblue;
+          text-decoration: none;
+          font-family: sans-serif; }
+        .home-container aside.user-friends ul.friends-list li:hover {
+          background-color: dodgerblue;
+          font-weight: bold; }
+          .home-container aside.user-friends ul.friends-list li:hover a {
+            color: white; }
+
 .bg-home {
   height: calc(100vh - 120px);
   background-color: silver; }
@@ -12,9 +45,27 @@
   padding: 16px;
   box-sizing: border-box;
   font-family: 'Poppins', sans-serif;
-  width: 100vw;
   background-color: white;
   overflow: auto; }
+
+.delete-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid red;
+  padding: 8px 16px;
+  border-radius: 8px;
+  transition: 0.2s ease-in-out; }
+  .delete-container a {
+    text-decoration: none;
+    color: red; }
+    .delete-container a i {
+      margin-right: 8px; }
+  .delete-container:hover {
+    background-color: red; }
+    .delete-container:hover a {
+      color: white;
+      font-weight: bold; }
 
 .posts form {
   display: flex;
@@ -58,7 +109,16 @@
     color: white;
     border-radius: 8px 8px 0 0;
     box-sizing: border-box;
-    padding: 16px; }
+    padding: 16px;
+    display: flex;
+    align-items: stretch; }
+    .post-card .heading .post-heading {
+      flex: 5; }
+    .post-card .heading .delete-container {
+      flex: 1;
+      border: 1px solid white; }
+      .post-card .heading .delete-container a {
+        color: white; }
   .post-card .content {
     text-transform: capitalize;
     font-size: 1.5rem;
@@ -98,7 +158,13 @@
   padding: 16px !important; }
   .all-comments .comment-list-item {
     border-bottom: 1px solid silver;
-    padding: 8px 0; }
+    padding: 8px 0;
+    display: flex;
+    align-items: stretch; }
+    .all-comments .comment-list-item div.comment {
+      flex: 5; }
+    .all-comments .comment-list-item div.delete-container {
+      flex: 1; }
   .all-comments .comment-content {
     text-transform: capitalize;
     font-size: 0.9rem; }

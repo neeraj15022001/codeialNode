@@ -1,0 +1,11 @@
+<li class="comment-list-item">
+    <div class="comment">
+        <p class="comment-content"><%= comment.content %></p>
+        <p class="comment-author">Commented By - <%= comment.user.name %></p>
+    </div>
+    <% if(locals.user && locals.user.id === comment.user.id) { %>
+        <div class="delete-container">
+            <a href="/posts/comments/destroy/<%= comment.id %>"><i class="bi bi-trash-fill"></i>Delete</a>
+        </div>
+    <% } %>
+</li>

@@ -1,4 +1,5 @@
 const Posts = require("../models/posts_schema")
+const User = require("../models/users_schema")
 module.exports.home = (req, res) => {
     Posts.find({})
         .populate("user")
@@ -8,9 +9,13 @@ module.exports.home = (req, res) => {
                 console.log("Error while getting posts", err);
                 return;
             }
-            return res.render("home", {
-                title: "Home",
-                posts: data
+            User.find({}, (err, users) => {
+                return res.render("home", {
+                    title: "Home",
+                    posts: data,
+                    all_users: users
+                })
             })
+
         })
 }
