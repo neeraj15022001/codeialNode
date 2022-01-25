@@ -1,3 +1,4 @@
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
 <link rel="stylesheet" href="/css/home.css">
 <main class="home-container">
@@ -26,9 +27,9 @@
         <h4>Friends</h4>
         <ul class="friends-list">
             <% for(u of all_users) { %>
-            <li>
-                <a href="/users/profile/<%= u.id %>"><%= u.name %></a>
-            </li>
+                <li>
+                    <a href="/users/profile/<%= u.id %>"><%= u.name %></a>
+                </li>
             <% } %>
         </ul>
 

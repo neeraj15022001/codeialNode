@@ -67,6 +67,14 @@
   font-family: 'Poppins', sans-serif;
   background-color: white;
   overflow: auto;
+  //&::-webkit-scrollbar {
+  //  background-color: white;
+  //  width: 8px;
+  //}
+  //&::-webkit-scrollbar-thumb {
+  //  background-color: dodgerblue;
+  //  border-radius: 8px;
+  //}
 }
 
 .delete-container {
@@ -92,6 +100,7 @@
       color: white;
       font-weight: bold;
     }
+
     background-color: red;
   }
 }
@@ -245,5 +254,11 @@
     font-size: 0.7rem;
     font-weight: 400;
     color: darkgrey;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  aside.user-friends {
+    display: none !important;
   }
 }
