@@ -10,7 +10,7 @@ const passportLocal = require("./config/passport-local-strategy")
 const MongoStore = require("connect-mongo")
 const sassMiddleware = require("@gompa/node-sass-middleware")
 const flash = require('connect-flash');
-const customMiddleware = require("/config/middleware")
+const customMiddleware = require("./config/middleware")
 app.use(sassMiddleware({
     src: "./assets/scss/",
     dest: "./assets/css/",
