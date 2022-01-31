@@ -49,7 +49,15 @@
         background-color: royalblue;
       }
     }
-    input[type="submit"] {
+    #file-input-preview {
+      display: none;
+      margin: 0 auto 8px;
+    }
+    #file-input-clear {
+      display: none;
+      width: 100%;
+    }
+    input[type="submit"], #file-input-clear {
       padding: 16px;
       border: none;
       outline: none;

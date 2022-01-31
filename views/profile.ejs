@@ -7,6 +7,10 @@
             <input type="text" name="name" placeholder="Your Name" value="<%= profile_user.name %>" required>
             <input type="email" name="email" placeholder="Your Email" value="<%= profile_user.email %>" required>
             <!--            TODO: Provide preview of file and allow to remove it if user don't like it-->
+            <div>
+                <img src="#" alt="your_image" id="file-input-preview">
+                <button id="file-input-clear">Clear Image</button>
+            </div>
             <label for="file-input" id="file-input-label">
                 Upload Photo
                 <input type="file" name="avatar" placeholder="Profile Picture"
@@ -19,3 +23,21 @@
         <p>User: <%= profile_user.name %></p>
     <% } %>
 </section>
+<script>
+    document.getElementById("file-input").addEventListener("change", (e) => {
+        const [file] = document.getElementById("file-input").files
+        if (file) {
+            const imgTag = document.getElementById("file-input-preview");
+            const clearButton = document.getElementById(("file-input-clear"))
+            clearButton.style.display = "block";
+            imgTag.style.display = "block";
+            imgTag.src = URL.createObjectURL(file)
+        }
+    })
+    document.getElementById("file-input-clear").addEventListener("clear", (e) => {
+        const imgTag = document.getElementById("file-input-preview");
+        imgTag.style.display = "none";
+        clearButton.style.display = "none";
+        imgTag.src = "#"
+    })
+</script>
