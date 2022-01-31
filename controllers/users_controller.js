@@ -20,9 +20,9 @@ module.exports.update = async (req, res) => {
                 user.email = req.body.email;
                 if (req.file) {
 
-                    if(user.avatar) {
-                        //TODO: check if file is also present in directory before removing
-                        fs.unlinkSync(path.join(__dirname, "..", user.avatar))
+                    if (user.avatar) {
+                        if (fs.existsSync(path.join(__dirname, "..", user.avatar)))
+                            fs.unlinkSync(path.join(__dirname, "..", user.avatar))
                     }
 
                     user.avatar = User.avatarPath + "/" + req.file.filename

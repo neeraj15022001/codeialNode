@@ -6,7 +6,6 @@
         <form action="/users/update/<%= profile_user.id %>" method="post" enctype="multipart/form-data">
             <input type="text" name="name" placeholder="Your Name" value="<%= profile_user.name %>" required>
             <input type="email" name="email" placeholder="Your Email" value="<%= profile_user.email %>" required>
-            <!--            TODO: Provide preview of file and allow to remove it if user don't like it-->
             <div>
                 <img src="#" alt="your_image" id="file-input-preview">
                 <button id="file-input-clear">Clear Image</button>
