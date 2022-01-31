@@ -11,6 +11,15 @@ module.exports.create = async (req, res) => {
             })
             post.comments.push(comment);
             post.save();
+            if(req.xhr) {
+                return res.status(200).send({
+                    data: {
+                        comment: comment
+                    },
+                    username: req.user.name,
+                    message: "You Just Commented"
+                })
+            }
             req.flash("success", "Hey, You Just Commented")
             return res.redirect("back");
         } else {
@@ -29,8 +38,16 @@ module.exports.destroy = async (req, res) => {
         if (comment.user == req.user.id) {
             let postId = comment.post;
             comment.remove();
-            req.flash("success", "Comment Removed Successfully")
             Posts.findByIdAndUpdate(postId, {$pull: {comments: req.params.id}});
+            if(req.xhr) {
+                return res.status(200).json({
+                    data: {
+                        comments_id: req.params.id
+                    },
+                    message: "Comment Deleted"
+                })
+            }
+            req.flash("success", "Comment Removed Successfully")
             return res.redirect("back")
         } else {
             req.flash("error", "You are not allowed to perform this action");

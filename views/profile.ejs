@@ -1,11 +1,17 @@
 <link rel="stylesheet" href="/css/profile.css">
 <section class="profile-section">
     <h1>User Profile</h1>
-
+    <img src="<%= profile_user.avatar %>" alt="<%= profile_user.name %>">
     <% if(user.id == profile_user.id) { %>
-        <form action="/users/update/<%= profile_user.id %>" method="post">
+        <form action="/users/update/<%= profile_user.id %>" method="post" enctype="multipart/form-data">
             <input type="text" name="name" placeholder="Your Name" value="<%= profile_user.name %>" required>
             <input type="email" name="email" placeholder="Your Email" value="<%= profile_user.email %>" required>
+            <!--            TODO: Provide preview of file and allow to remove it if user don't like it-->
+            <label for="file-input" id="file-input-label">
+                Upload Photo
+                <input type="file" name="avatar" placeholder="Profile Picture"
+                       id="file-input">
+            </label>
             <input type="submit" value="Update">
         </form>
     <% } else { %>

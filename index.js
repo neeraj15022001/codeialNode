@@ -19,6 +19,7 @@ app.use(sassMiddleware({
     prefix: "/css"
 }))
 //set up the view engine
+app.use("/uploads", express.static(__dirname + "/uploads"))
 app.use(express.static("./assets"))
 app.use(expressLayouts);
 app.set("layout extractStyles", true);

@@ -6,7 +6,7 @@
         <section class="main-home">
             <% if(locals.user) { %>
                 <section class="posts">
-                    <form action="/posts/create" method="post">
+                    <form action="/posts/create" method="post" id="posts-form">
                         <textarea name="content" placeholder="Type Here..." required></textarea>
                         <input type="submit" value="Post">
                     </form>

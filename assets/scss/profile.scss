@@ -3,9 +3,69 @@
   box-sizing: border-box;
   padding: 16px;
 }
+
 .profile-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
   h1 {
-    padding: 0;
-    margin: 0;
+    font-family: sans-serif;
+    text-align: center;
+  }
+
+  img {
+    width: 100px;
+    margin-bottom: 16px;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+
+    input[type="text"], input[type="email"] {
+      padding: 8px 16px;
+      border-radius: 8px;
+      border: 1px solid silver;
+      margin-bottom: 8px;
+    }
+    #file-input-label {
+      font-family: sans-serif;
+      box-sizing: border-box;
+      background-color: dodgerblue;
+      color: white;
+      text-align: center;
+      margin-bottom: 8px;
+      padding: 8px;
+      border-radius: 8px;
+      font-weight: bold;
+      cursor: pointer;
+      input {
+        display: none;
+      }
+      &:hover {
+        background-color: royalblue;
+      }
+    }
+    input[type="submit"] {
+      padding: 16px;
+      border: none;
+      outline: none;
+      border-radius: 8px;
+      color: white;
+      background-color: dodgerblue;
+      transition: 0.3s ease-in-out;
+      margin-bottom: 16px;
+      font-size: 0.9rem;
+      cursor: pointer;
+      text-transform: uppercase;
+      font-weight: bolder;
+
+      &:hover {
+        background-color: royalblue;
+      }
+    }
   }
 }

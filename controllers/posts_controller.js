@@ -2,7 +2,16 @@ const Posts = require("../models/posts_schema")
 const Comments = require("../models/comments_schema")
 module.exports.create = async (req, res) => {
     try {
-        await Posts.create({content: req.body.content, user: req.user._doc._id})
+        let post = await Posts.create({content: req.body.content, user: req.user._doc._id})
+        if (req.xhr) {
+            return res.status(200).json({
+                data: {
+                    post: post,
+                    username: req.user.name
+                },
+                message: "Post Created!"
+            })
+        }
         req.flash("success", "Post Published")
         return res.redirect("back")
     } catch (e) {
@@ -19,6 +28,14 @@ module.exports.destroy = async (req, res) => {
             post.remove();
             req.flash("success", "Post Removed")
             await Comments.deleteMany({post: req.params.id})
+            if (req.xhr) {
+                return res.status(200).json({
+                    data: {
+                        post_id: req.params.id
+                    },
+                    message: "Post Deleted"
+                })
+            }
             return res.redirect('back');
         } else {
             req.flash("error", "You Cannot Delete this Post")

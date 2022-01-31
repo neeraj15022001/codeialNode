@@ -1,20 +1,42 @@
 const User = require("../models/users_schema")
+const fs = require("fs")
+const path = require("path")
 module.exports.profile = (req, res) => {
     User.findById(req.params.id, (err, user) => {
         return res.render("profile", {title: "User Profile", profile_user: user});
     })
 }
 
-module.exports.update = (req, res) => {
+module.exports.update = async (req, res) => {
+
     if (req.user.id == req.params.id) {
-        User.findByIdAndUpdate(req.params.id, req.body, (err, user) => {
-            if (err) {
-                console.log("Error while updating user", err);
-                return;
-            }
-            return res.redirect("back")
-        })
+        try {
+            let user = await User.findByIdAndUpdate(req.params.id, req.body);
+            User.uploadedAvatar(req, res, function (err) {
+                if (err) {
+                    console.log("******Multer Error", err)
+                }
+                user.name = req.body.name;
+                user.email = req.body.email;
+                if (req.file) {
+
+                    if(user.avatar) {
+                        //TODO: check if file is also present in directory before removing
+                        fs.unlinkSync(path.join(__dirname, "..", user.avatar))
+                    }
+
+                    user.avatar = User.avatarPath + "/" + req.file.filename
+                }
+                user.save()
+                console.log(req.file)
+                return res.redirect("back")
+            })
+        } catch (e) {
+            req.flash('error', e);
+            return res.redirect("back");
+        }
     } else {
+        req.flash('error', "Unauthorized");
         return res.status(401).send("Unauthorized")
     }
 }
@@ -28,7 +50,7 @@ module.exports.login = (req, res) => {
     if (req.isAuthenticated()) {
         return res.redirect(`/users/profile/${req.user.id}`)
     }
-    return res.render('login', {layout: false, title: "Login"});
+    return res.render('login', {title: "Login"});
 }
 
 //render signup page
@@ -36,7 +58,7 @@ module.exports.signup = (req, res) => {
     if (req.isAuthenticated()) {
         return res.redirect(`/users/profile/${req.user.id}`)
     }
-    return res.render('signup', {layout: false, title: "Signup"});
+    return res.render('signup', {title: "Signup"});
 }
 
 //create user
@@ -74,5 +96,5 @@ module.exports.createSession = (req, res) => {
 module.exports.destroySession = function (req, res) {
     req.logout();
     req.flash('success', 'You Have Logged Out')
-    return res.redirect("/");
+    return res.redirect("/users/login");
 }
