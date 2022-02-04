@@ -5,7 +5,7 @@ const User = require("../models/users_schema")
 //*******in the usernameField pass the name of email input tag**********
 passport.use(new LocalStrategy({usernameField: "email", passReqToCallback: true}, function (req, email, password, done) {
 //    find a user and establish the identity
-            console.log(email, password)
+            console.log("Using Local Strategy")
             User.findOne({email: email}, (err, user) => {
                     if (err) {
                         console.log("Error while retrieving user ----> Passport", err);

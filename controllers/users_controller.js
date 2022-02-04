@@ -90,6 +90,7 @@ module.exports.create = (req, res) => {
 }
 //create user session
 module.exports.createSession = (req, res) => {
+    console.log("Local Strategy created session")
     req.flash('success', 'Logged In Successfully')
     return res.redirect(`/users/profile/${req.user.id}`)
 }
