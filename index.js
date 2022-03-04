@@ -41,7 +41,7 @@ app.use(session({
     },
     store: MongoStore.create({
             mongoUrl: 'mongodb://localhost:27017/codeial_development',
-            autoremove: 'disabled'
+            autoRemove: 'disabled'
         },
         function (err) {
             console.log(err || 'connect-mongo success ok')
