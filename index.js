@@ -1,6 +1,7 @@
 const express = require("express");
 const app = express();
 const PORT = 8000;
+require('dotenv').config()
 const expressLayouts = require("express-ejs-layouts")
 const db = require("./config/mongoose")
 const cookieParser = require("cookie-parser")
@@ -13,7 +14,6 @@ const MongoStore = require("connect-mongo")
 const sassMiddleware = require("@gompa/node-sass-middleware")
 const flash = require('connect-flash');
 const customMiddleware = require("./config/middleware")
-require('dotenv').config()
 app.use(sassMiddleware({
     src: "./assets/scss/",
     dest: "./assets/css/",
