@@ -7,6 +7,10 @@ router.post("/update/:id", passport.checkAuthentication, userController.update)
 router.get("/about", userController.about);
 router.get("/login", userController.login);
 router.get("/signup", userController.signup);
+router.get("/forgot-password", userController.reset);
+router.get("/change-password", userController.changePassword)
+router.post("/update-password", userController.updatePassword)
+router.post("/forgot-password/send", userController.sendLink);
 router.post("/create", userController.create)
 //use passport as middleware to authenticate
 router.post(

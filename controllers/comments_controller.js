@@ -1,7 +1,7 @@
 const Comments = require("../models/comments_schema")
 const Posts = require("../models/posts_schema")
 // const {newComment} = require("../mailers/comments_mailer");
-const queue = require("../config/bull")
+const queues = require("../config/bull")
 const commentEmailWorker = require("../workers/comment_email_worker")
 module.exports.create = async (req, res) => {
     try {
@@ -17,10 +17,10 @@ module.exports.create = async (req, res) => {
             comment = await comment.populate("user", "name email")
             // newComment(comment)
             try {
-                const job = await queue.add('emails', comment);
+                const job = await queues.emailQueue.add('emails', comment);
                 console.log("Job Created", job.id)
             } catch (e) {
-                console.log("Error while adding to queue", err);
+                console.log("Error while adding to queue", e);
             }
             if(req.xhr) {
                 return res.status(200).send({
