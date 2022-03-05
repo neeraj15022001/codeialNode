@@ -11,7 +11,7 @@ main()
     })
 
 async function main() {
-    return await mongoose.connect("mongodb://localhost:27017/codeial_development")
+    return await mongoose.connect(process.env.MONGO_URL)
 }
 
 function handleSuccess(db) {

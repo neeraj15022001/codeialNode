@@ -13,6 +13,7 @@ const MongoStore = require("connect-mongo")
 const sassMiddleware = require("@gompa/node-sass-middleware")
 const flash = require('connect-flash');
 const customMiddleware = require("./config/middleware")
+require('dotenv').config()
 app.use(sassMiddleware({
     src: "./assets/scss/",
     dest: "./assets/css/",
@@ -34,13 +35,13 @@ app.use(session({
     name: "neeraj",
 //    TODO change the secret  before deployment in production
     saveUninitialized: false,
-    secret: "blahsomething",
+    secret: process.env.SESSION_SECRET_KEY,
     resave: false,
     cookie: {
         maxAge: (1000 * 60 * 100)
     },
     store: MongoStore.create({
-            mongoUrl: 'mongodb://localhost:27017/codeial_development',
+            mongoUrl: process.env.MONGO_URL,
             autoRemove: 'disabled'
         },
         function (err) {

@@ -4,7 +4,7 @@ let JwtStrategy = require('passport-jwt').Strategy,
 const User = require("../models/users_schema")
 let opts = {}
 opts.jwtFromRequest = ExtractJwt.fromAuthHeaderAsBearerToken();
-opts.secretOrKey = 'codeial';
+opts.secretOrKey = process.env.JWT_SECRET_KEY;
 passport.use(new JwtStrategy(opts, function (jwt_payload, done) {
     console.log("jwt payload", jwt_payload.sub, jwt_payload)
     User.findOne({_id: jwt_payload._id}, function (err, user) {
