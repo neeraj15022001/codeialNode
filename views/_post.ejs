@@ -1,4 +1,4 @@
-<li class="post-card" id="post-<%=post._id%>">
+<li class="post-card" id="post-<%= post._id %>">
 
     <div class="heading">
         <div class="post-heading">
@@ -13,14 +13,14 @@
     </div>
     <div class="comment-box">
         <% if(locals.user) { %>
-            <form id="post-<%=post._id%>-comments-form" action="/posts/comments/create" method="post">
-                <input type="text" name="content" placeholder="Comment Here..." required>
-                <input type="hidden" name="post" value="<%= post._id %>">
-                <input type="submit" value="Add Comment">
-            </form>
+        <form id="post-<%= post._id %>-comments-form" action="/posts/comments/create" method="post">
+            <input type="text" name="content" placeholder="Comment Here..." required>
+            <input type="hidden" name="post" value="<%= post._id %>">
+            <input type="submit" value="Add Comment">
+        </form>
         <% } %>
     </div>
-    <ul class="all-comments" id="all-comments-<%=post._id%>">
+    <ul class="all-comments" id="all-comments-<%= post._id %>">
         <% for(comment of post.comments) { %>
             <%- include("_comment") %>
         <% } %>

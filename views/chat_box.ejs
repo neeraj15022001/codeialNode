@@ -1,0 +1,18 @@
+<link rel="stylesheet" href="/css/chat_box.css">
+<script src="/js/home.js"></script>
+<% if (locals.user){ %>
+    <div id="user-chat-box-button" onclick="openChatBox()">
+        <button>Chat</button>
+    </div>
+    <div id="user-chat-box" class="hidden">
+        <div id="user-chat-box-header">
+            <button id="close-button" onclick="closeChatBox()">Close</button>
+        </div>
+        <ul id="chat-messages-list">
+        </ul>
+        <div id="chat-message-input-container">
+            <input id="chat-message-input" placeholder="Type message here">
+            <button id="send-message">Send</button>
+        </div>
+    </div>
+<% } %>

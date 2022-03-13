@@ -3,6 +3,7 @@ const Posts = require("../models/posts_schema")
 // const {newComment} = require("../mailers/comments_mailer");
 const queues = require("../config/bull")
 const commentEmailWorker = require("../workers/comment_email_worker")
+const Like = require("../models/like_schema")
 module.exports.create = async (req, res) => {
     try {
         let post = await Posts.findById(req.body.post)
@@ -50,6 +51,8 @@ module.exports.destroy = async (req, res) => {
             let postId = comment.post;
             comment.remove();
             Posts.findByIdAndUpdate(postId, {$pull: {comments: req.params.id}});
+            // CHANGE :: destroy the associated likes for this comment
+            await Like.deleteMany({likeable: comment._id, onModel: 'Comment'});
             if(req.xhr) {
                 return res.status(200).json({
                     data: {

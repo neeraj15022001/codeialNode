@@ -14,6 +14,14 @@ const MongoStore = require("connect-mongo")
 const sassMiddleware = require("@gompa/node-sass-middleware")
 const flash = require('connect-flash');
 const customMiddleware = require("./config/middleware")
+const cors = require("cors");
+app.use(cors())
+const {createServer} = require("http");
+const chatServer = createServer(app);
+const chatSockets = require("./config/chat_sockets").chatSockets(chatServer)
+chatServer.listen(5000);
+console.log("Chat server is listening on port 5000");
+
 app.use(sassMiddleware({
     src: "./assets/scss/",
     dest: "./assets/css/",
